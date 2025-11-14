@@ -11,5 +11,14 @@ public class Main {
       this.data = data;
       this.previousHash = previousHash;
       this.timeStamp = new Date().getTime();
+      this.hash = calculateHash();
+  }
+
+  public String calculateHash() {
+      return StringUtil.applySha256(
+                previousHash +
+                      Long.toString(timeStamp) +
+                      data
+                );
   }
 }
